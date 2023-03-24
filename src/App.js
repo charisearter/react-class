@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+	constructor() {
+		super();
+		this.state = {
+			title: 'Title goes here',
+			users: [
+				{
+					id: 1,
+					name: 'A',
+				},
+				{
+					id: 2,
+					name: 'B',
+				},
+				{
+					id: 3,
+					name: 'C',
+				},
+			],
+		};
+	}
+	render() {
+		const { title, users } = this.state;
+		return (
+			<div className='App'>
+				<h1>{title}</h1>
+				<h2>Users</h2>
+				{users.map((user) => {
+					const { id, name } = user;
+					return <h1 key={id}>{name}</h1>;
+				})}
+			</div>
+		);
+	}
 }
 
 export default App;
