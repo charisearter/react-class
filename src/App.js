@@ -1,36 +1,49 @@
 import { Component } from 'react';
-
+import CharacterList from './components/character-list/CharacterList';
+import Search from './components/search-box/Search';
+import Title from './components/title/Title';
 class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			title: 'Title goes here',
-			users: [
-				{
-					id: 1,
-					name: 'A',
-				},
-				{
-					id: 2,
-					name: 'B',
-				},
-				{
-					id: 3,
-					name: 'C',
-				},
-			],
+			characters: [],
+			searchField: '',
 		};
 	}
+
+	componentDidMount() {
+		fetch('https://rickandmortyapi.com/api/character')
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data.results);
+				this.setState({ characters: data.results });
+			});
+	}
+
+	onSearchChange = (e) => {
+		e.preventDefault();
+		console.log(e);
+		const searchField = e.target.value.toLowerCase();
+		this.setState({ searchField });
+	};
+
 	render() {
-		const { title, users } = this.state;
+		const { characters, searchField } = this.state;
+		const { onSearchChange } = this;
+
+		const filteredCharacters = characters.filter((character) => {
+			return character.name.toLowerCase().includes(searchField);
+		});
+
 		return (
 			<div className='App'>
-				<h1>{title}</h1>
-				<h2>Users</h2>
-				{users.map((user) => {
-					const { id, name } = user;
-					return <h1 key={id}>{name}</h1>;
-				})}
+				<h1> App Class Component</h1>
+				<Title title='Title goes here' subTitle=' Optional Sub title' />
+				<Search
+					onSearchChange={onSearchChange}
+					placeholder='Search by Character'
+				/>
+				<CharacterList filteredCharacters={filteredCharacters} />
 			</div>
 		);
 	}
