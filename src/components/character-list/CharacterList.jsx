@@ -10,7 +10,7 @@ class CharacterList extends Component {
 				<h2> List of characters</h2>
 				{filteredCharacters.map((character) => {
 					const { id, name } = character;
-					return <Card key={id} name={name} id={id} />;
+					return <Card key={id} name={name} />;
 				})}
 			</div>
 		);
