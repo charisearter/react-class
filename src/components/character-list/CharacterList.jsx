@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Card from '../card/Card';
 
 class CharacterList extends Component {
 	render() {
@@ -9,7 +10,7 @@ class CharacterList extends Component {
 				<h2> List of characters</h2>
 				{filteredCharacters.map((character) => {
 					const { id, name } = character;
-					return <h1 key={id}>{name}</h1>;
+					return <Card key={id} name={name} id={id} />;
 				})}
 			</div>
 		);
