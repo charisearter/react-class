@@ -1,18 +1,11 @@
-import { Component } from 'react';
+// Implicit return because I am not returning anything else
 
-class Search extends Component {
-	render() {
-		const { onSearchChange, placeholder } = this.props;
-		return (
-			<div>
-				<input
-					type='text'
-					placeholder={placeholder}
-					onChange={onSearchChange}
-				/>
-			</div>
-		);
-	}
-}
-
+const Search = ({ onSearchChange, placeholder, className }) => (
+	<input
+		className={`search-box ${className}`}
+		type='search'
+		placeholder={placeholder}
+		onChange={onSearchChange}
+	/>
+);
 export default Search;
