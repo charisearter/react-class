@@ -28,15 +28,14 @@ const App = () => {
 	};
 
 	return (
-		<div className='App'>
-			<h1> App Class Component</h1>
+		<main className='App'>
 			<Title title='Title goes here' subTitle=' Optional Sub title' />
 			<Search
 				onSearchChange={onSearchChange}
 				placeholder='Search by Character'
 			/>
 			<CharacterList filteredCharacters={filteredCharacters} />
-		</div>
+		</main>
 	);
 };
 

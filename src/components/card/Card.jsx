@@ -18,7 +18,7 @@ const Card = ({
 				width={'150px'}
 				height={'150px'}
 			/>
-			<h1> {name} </h1>
+			<h2> {name} </h2>
 			<h3> Location: {location.name}</h3>
 			<h3> Origin: {origin.name}</h3>
 			<h3> Status: {status}</h3>
