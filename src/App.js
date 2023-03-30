@@ -5,6 +5,7 @@ import Title from './components/title/Title';
 
 const App = () => {
 	const [searchField, setSearchField] = useState('');
+	const [title, setTitle] = useState('Title here');
 	const [characters, setCharacters] = useState([]);
 	const [filteredCharacters, setFilteredCharacters] = useState(characters);
 
@@ -27,9 +28,19 @@ const App = () => {
 		setSearchField(searchFieldString);
 	};
 
+	const onTitleChange = (e) => {
+		e.preventDefault();
+		const titleString = e.target.value;
+		setTitle(titleString);
+	};
 	return (
 		<main className='App'>
-			<Title title='Title goes here' subTitle=' Optional Sub title' />
+			<Title
+				className='title-change'
+				title={title}
+				subTitle=' Optional Sub title'
+				onTitleChange={onTitleChange}
+			/>
 			<Search
 				onSearchChange={onSearchChange}
 				placeholder='Search by Character'
